@@ -1,7 +1,8 @@
 package online.saikat.runnerz.run;
 
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
+
+import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 
@@ -36,7 +37,7 @@ public class RunController {
         Optional<Run> run = runRepository.findById(id);
 
         if( run.isEmpty() ){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not found");
+            throw new RunNotFoundException();
         }
         
         return run.get();
@@ -44,7 +45,7 @@ public class RunController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/run")
-    void create(@RequestBody Run run){
+    void create(@Valid @RequestBody Run run){
         runRepository.create(run);
     }
 
@@ -57,7 +58,7 @@ public class RunController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/run/{id}")
-    void delete( @RequestBody Run run ){
+    void delete( @PathVariable Integer id ){
         runRepository.delete(id);
     }
 

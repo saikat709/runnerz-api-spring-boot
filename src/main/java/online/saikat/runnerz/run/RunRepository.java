@@ -5,19 +5,15 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Repository;
 import jakarta.annotation.PostConstruct;
 
 @Repository
 public class RunRepository {
 
-
-    private RunController runController;
     private List<Run> runs = new ArrayList<>();
 
-    public RunRepository( RunController runController ) {
-        this.runController = runController;
+    public RunRepository() {
     }
 
     List<Run> getAll(){
