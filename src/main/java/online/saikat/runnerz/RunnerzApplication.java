@@ -10,8 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import online.saikat.runnerz.run.Location;
-import online.saikat.runnerz.run.Run;
+import online.saikat.runnerz.run.*;
 
 @SpringBootApplication
 public class RunnerzApplication {
@@ -30,10 +29,12 @@ public class RunnerzApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner(){
+	CommandLineRunner runner(JdbcRunRepository jdbcRunRepository){
+		// this runs after the application is started
 		return args -> {
-			Run run = new Run(1, "First Run", LocalDateTime.now(), LocalDateTime.now().plus(1, ChronoUnit.MINUTES), 20, Location.INDOOR );
+			Run run = new Run(99, "First Run", LocalDateTime.now(), LocalDateTime.now().plus(1, ChronoUnit.MINUTES), 20, Location.INDOOR );
 			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(run.toString());
+			jdbcRunRepository.create(run);
 		};
 	}
 

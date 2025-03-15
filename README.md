@@ -26,3 +26,6 @@ curl -X POST localhost:8080/run \
         -H 'Content-Type: application/json' \
         -d '{ "id": 3, "title": "Third Run", "startOn" : "2025-03-15T21:33:05.104952507", "stopOn":"2025-03-15T21:34:05.104957073", "miles":20, "location":"INDOOR" }'
 ```
+
+## H2 - ImMemory Database
+Available at localhost:8080/h2-console

@@ -24,7 +24,7 @@ public record Run(
 
 ) {
     public Run {
-        if ( !stopOn.isAfter(startOn) ){
+        if ( stopOn != null && startOn != null && !stopOn.isAfter(startOn) ){
             throw new IllegalArgumentException("Completed before starting?!!");
         }
     }

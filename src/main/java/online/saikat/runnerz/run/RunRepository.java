@@ -13,8 +13,7 @@ public class RunRepository {
 
     private List<Run> runs = new ArrayList<>();
 
-    public RunRepository() {
-    }
+    public RunRepository() { }
 
     List<Run> getAll(){
         return runs;
