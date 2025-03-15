@@ -1,0 +1,3 @@
+### Find All Runs
+GET http://localhost:8080/runs 
+
