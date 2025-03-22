@@ -10,13 +10,13 @@ A spring boot api application.
 
 1. Get: Getting a Run Info
 ```bash
-curl -x GET localhost:8080/runs 
+curl -x GET localhost:8080/runs
 
 // or
-curl -s localhost:8080/runs
+curl -s localhost:8080/run
 
 // for pretty printing.. using json_pp or we can use jp
-curl -s localhost:8080/runs | json_pp
+curl -s localhost:8080/run | json_pp
 
 ```
 

@@ -1,20 +1,22 @@
 package online.saikat.runnerz.run;
 
-import java.util.List;
-import java.util.Optional;
 
 import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
+
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class JdbcRunRepository {
     private final JdbcClient jdbcClient;
 
     public JdbcRunRepository(JdbcClient jdbcClient){
-        // we can receive whatever we need in contructor. Spring will manage it. 
+        // we can receive whatever we need in constructor. Spring will manage it.
         this.jdbcClient = jdbcClient;
     }
+
 
     public List<Run> findAll() {
         return jdbcClient.sql("select * from run")
@@ -30,12 +32,12 @@ public class JdbcRunRepository {
     }
 
     public void create(Run run) {
-        Integer updated = jdbcClient.sql("INSERT INTO RUN(id, title, start_on, stop_on, miles, location) values(?, ?, ?, ?, ?, ?)")
-            .param(1, run.id())
-            .param(2, run.title())
-            .param(3, run.startOn())
-            .param(4, run.stopOn())
-            .param(5, run.miles())
+        int updated = jdbcClient.sql("INSERT INTO RUN(id, title, start_on, stop_on, miles, location) values(?, ?, ?, ?, ?, ?)")
+            .param(1, run.id() )
+            .param(2, run.title() )
+            .param(3, run.startOn() )
+            .param(4, run.stopOn() )
+            .param(5, run.miles() )
             .param(6, run.location().toString())
             .update();
         
@@ -63,7 +65,7 @@ public class JdbcRunRepository {
     }
 
     public void saveAll(List<Run> runs) {
-        runs.stream().forEach(this::create);
+        runs.forEach(this::create);
     }
 
     public List<Run> findByLocation(String location) {
@@ -72,5 +74,6 @@ public class JdbcRunRepository {
                 .query(Run.class)
                 .list();
     }
+
 
 }

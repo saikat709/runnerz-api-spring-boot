@@ -18,7 +18,7 @@ public class RunnerzApplication {
     private final WelcomeMessage welcomeMessage;
 
     RunnerzApplication(WelcomeMessage welcomeMessage) {
-        this.welcomeMessage = welcomeMessage;
+		this.welcomeMessage = welcomeMessage;
     }
 
 	public static void main(String[] args) {
@@ -32,9 +32,9 @@ public class RunnerzApplication {
 	CommandLineRunner runner(JdbcRunRepository jdbcRunRepository){
 		// this runs after the application is started
 		return args -> {
-			Run run = new Run(99, "First Run", LocalDateTime.now(), LocalDateTime.now().plus(1, ChronoUnit.MINUTES), 20, Location.INDOOR );
-			Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(run.toString());
-			jdbcRunRepository.create(run);
+			 Run run = new Run(99, "First Run", LocalDateTime.now(), LocalDateTime.now().plus(1, ChronoUnit.MINUTES), 20, Location.INDOOR );
+			 Logger.getLogger(Logger.GLOBAL_LOGGER_NAME).info(run.toString());
+			// jdbcRunRepository.create(run);
 		};
 	}
 
