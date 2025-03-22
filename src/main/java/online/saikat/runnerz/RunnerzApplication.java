@@ -21,10 +21,10 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 @SpringBootApplication
 public class RunnerzApplication {
 
-    private final WelcomeMessage welcomeMessage;
+    //private final WelcomeMessage welcomeMessage;
 
     RunnerzApplication(WelcomeMessage welcomeMessage) {
-		this.welcomeMessage = welcomeMessage;
+		 //this.welcomeMessage = welcomeMessage;
     }
 
 	public static void main(String[] args) {
@@ -50,6 +50,12 @@ public class RunnerzApplication {
 			// jdbcRunRepository.create(run);
 		};
 	}
+
+	@Bean
+	WelcomeMessage welcomeBean(){
+		return new WelcomeMessage();
+	}
+
 
 	@Bean
 	CommandLineRunner checkRestOrHttpClient(UserRestClient userRestClient, UserHttpClient httpClient){
